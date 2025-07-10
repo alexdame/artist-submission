@@ -1,0 +1,63 @@
+<!-- admin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎧 Admin Dashboard</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Artist</th>
+          <th>Song Title</th>
+          <th>Release Date</th>
+          <th>Status</th>
+          <th>Artwork</th>
+          <th>Music</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Jay Vibes</td>
+          <td>Fire Track</td>
+          <td>2024-07-20</td>
+          <td>
+            <select>
+              <option>Pending</option>
+              <option>Approved</option>
+              <option>Rejected</option>
+              <option>In Progress</option>
+            </select>
+          </td>
+          <td><a href="#">Download</a></td>
+          <td><a href="#">Download</a></td>
+          <td><input type="text" placeholder="Add note..."></td>
+        </tr>
+        <tr>
+          <td>Lisa Flame</td>
+          <td>Golden Days</td>
+          <td>2024-07-25</td>
+          <td>
+            <select>
+              <option>Pending</option>
+              <option selected>Approved</option>
+              <option>Rejected</option>
+              <option>In Progress</option>
+            </select>
+          </td>
+          <td><a href="#">Download</a></td>
+          <td><a href="#">Download</a></td>
+          <td><input type="text" placeholder="Add note..."></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

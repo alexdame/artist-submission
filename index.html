@@ -1,0 +1,79 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist Submission</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎵 Artist Song Submission</h1>
+    <form id="submissionForm">
+      <label>Artist Name*</label>
+      <input type="text" name="artist" required>
+
+      <label>Song Title*</label>
+      <input type="text" name="title" required>
+
+      <label>Featured Artist(s)</label>
+      <input type="text" name="featured">
+
+      <label>Genre*</label>
+      <input type="text" name="genre" required>
+
+      <label>Language*</label>
+      <input type="text" name="language" required>
+
+      <label>Composer Name*</label>
+      <input type="text" name="composer" required>
+
+      <label>Writer Name*</label>
+      <input type="text" name="writer" required>
+
+      <label>Release Date*</label>
+      <input type="date" id="releaseDate" name="release_date" required>
+
+      <label>Artwork Upload*</label>
+      <small>PNG, JPG, PSD only. No logos/watermarks/social handles allowed.</small>
+      <input type="file" name="artwork" accept="image/*" required>
+
+      <label>Music File Upload*</label>
+      <small>MP3, WAV, ZIP accepted</small>
+      <input type="file" name="music" accept=".mp3,.wav,.zip" required>
+
+      <label>Social Media Links</label>
+      <input type="text" name="social">
+
+      <label>Email Address*</label>
+      <input type="email" name="email" required>
+
+      <label>Phone Number</label>
+      <input type="tel" name="phone">
+
+      <label><input type="checkbox" name="terms" required> I agree to the Terms and Conditions*</label>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('submissionForm').addEventListener('submit', function (e) {
+      const dateField = document.getElementById('releaseDate');
+      const selectedDate = new Date(dateField.value);
+      const today = new Date();
+      const minDate = new Date();
+      minDate.setDate(today.getDate() + 7);
+
+      if (selectedDate < minDate) {
+        alert("Release date must be at least 7 days from today.");
+        e.preventDefault();
+      } else {
+        alert("Form submitted successfully (demo only).");
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>

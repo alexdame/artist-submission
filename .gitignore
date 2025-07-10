@@ -1,0 +1,10 @@
+# .gitignore for static HTML/CSS/JS project
+.DS_Store
+node_modules/
+*.log
+.env
+.idea/
+.vscode/
+dist/
+build/
+Thumbs.db
