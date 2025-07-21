@@ -1,35 +1,32 @@
-# Use PHP with Apache
-FROM php:8.1-apache
+# Use PHP 8.3 with Apache
+FROM php:8.3-apache
 
-# Install required system packages and PHP extensions
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    zip unzip git curl libzip-dev libpng-dev libonig-dev libxml2-dev \
-    && docker-php-ext-install pdo pdo_mysql zip gd
+    zip unzip git curl libpng-dev libonig-dev libxml2-dev libzip-dev \
+    && docker-php-ext-install pdo pdo_mysql zip exif pcntl
 
-# Enable Apache rewrite module
+# Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
-# Set working directory inside the container
+# Set working directory
 WORKDIR /var/www/html
 
-# Copy app files into the container
-COPY . /var/www/html
+# Copy project files
+COPY . .
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Run Composer install
+# Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Set permissions for Laravel folders
+# Set permissions
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Copy Apache virtual host configuration
-COPY ./docker/apache.conf /etc/apache2/sites-available/000-default.conf
-
-# Expose HTTP port
+# Expose port 80
 EXPOSE 80
 
-# Start Apache when the container starts
+# Start Apache
 CMD ["apache2-foreground"]
